@@ -1,0 +1,112 @@
+.cuerpo{
+    padding: 15px 15px 0px 15px;
+}
+
+@media only screen and (max-width: 346px) {
+    .cuerpo{
+        padding: 0px;
+    }
+    .contenido{
+        padding: 0px;
+    }
+}
+
+.contenido{
+    padding: 15px;
+    max-width: 980px;
+    background-color: white;
+    margin: auto;
+}
+
+.contenido select{
+    margin: 15px 12px 0 15px;
+}
+
+#publicar{
+    cursor: pointer;
+}
+
+#cont_form{
+    display: none;
+}
+
+.form_public{
+    text-align: center;
+}
+
+.form_public .boton-contenido{
+    max-width: 200px;
+}
+
+#cont_form_edit{
+    display: none;
+}
+
+.error_form{
+    display: none;
+    color: indianred;
+}
+
+.error_reserva{
+    color: indianred;
+}
+
+h1{
+    text-align: center;
+    margin: 20px 0 20px 0;
+}
+
+h1 span{
+    cursor: pointer;
+}
+
+h2{
+    text-align: center;
+}
+
+.cont_tabla{
+    margin-bottom: 50px;
+}
+
+.boton{
+    line-height: 0px;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    height: 25px;
+    width: 100px;
+}
+
+#mios{
+    display: none;
+}
+
+.seleccionado{
+    color: #008CBA;
+    cursor: default;
+}
+
+.texto_filtro{
+    margin-right: 10px; 
+    font-weight: bold;
+}
+
+#cont_filtro{
+    padding: 10px;
+    color: white;
+    background-color: #008CBA;
+}
+
+#cont_filtro select{
+    margin: 0px 15px 0px 0px !important;
+}
+
+.buscar{
+    color: black;
+    background-color: white;
+    max-width: 150px !important;
+}
+
+#numRes{
+    width: 30px;
+}

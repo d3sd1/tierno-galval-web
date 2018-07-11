@@ -1,0 +1,53 @@
+{# empty Twig template #}
+{% extends "index.html.twig" %}
+
+{% block content %}
+    <div id="build_modal"></div>
+    <div id="build_modal_response"></div>
+    <div class="p-1">
+        <div class="contenedor">
+            <div class="row">
+                <div class="col-md-8">
+                    <h1 class="display-4">Mis Ofertas</h1>
+                    <p class="lead">Edita, Actualiza y Borra tus publicaciones</p>
+                    <table class="table table-striped table-hover">
+                        <thead>
+                        <tr>
+                            <th>ID Oferta</th>
+                            <th>Título&nbsp;</th>
+                            <th>Acciones</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        {% for oferta in misOfertas %}
+
+                            <tr>
+                                <td class="text-center">  {{ oferta.idOferta|escape }}</td>
+                                <td class="text-center"><a href="index.php?c=bolsa_trabajo&a=ver_oferta&id_oferta={{oferta.idOferta  }}" >{{ oferta.titulo|e }}</a></td>
+                                <td>
+                                    <a class="btn btn-outline-primary w-100 p-0 m-1"
+                                       data-toggle="modal" id="editar_oferta_button" onclick="editarOferta('{{ oferta.idOferta|escape }}')">Editar</a>
+                                    <a class="btn w-100 p-0 m-1 btn-block btn-danger"  id="borrar_oferta_button" onclick="borrarOferta('{{ oferta.idOferta|escape }}')">Borrar </a>
+                                </td>
+                            </tr>
+
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+
+    {% include 'bolsaTrabajo/scripts-comunes.html.twig' %}
+
+
+    <script src="js/bolsaTrabajo/mis_ofertas.js"></script>
+
+{% endblock %}

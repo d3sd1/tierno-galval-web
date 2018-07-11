@@ -1,0 +1,69 @@
+{% extends "index.html.twig" %}
+
+{% block styles %}
+    <link rel="stylesheet" href="/css/tareas/tareas.css">
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}
+
+{% block content %}
+    <style>
+        tr:hover{
+            background-color:lightcoral !important;
+        }
+    </style>
+
+    <div class="cuerpo">
+        <div class="contenido">
+            <h1 class="tareas_title">{{ textos.TareasParaAlumnos }}</h1>
+            <p>{{ textos.SeleccioneCursoMostrarTareas }}</p>
+
+            {% if cursos %}
+
+                <table class="tareas_table table-striped">
+                    <thead>
+                        <tr>
+                            <th>{{ textos.CampoNombre }}</th>
+                            <th>{{ textos.CampoTipo }}</th>
+                            <th>{{ textos.CampoTurno }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for curso in cursos %}
+                            {% if curso.nombre_curso %}
+                                <tr>
+                                    <td>
+                                        <a href="/index.php?c=tareas&a={{ action_ver_curso }}&id_curso={{ curso.id_curso }}">
+                                            {{ curso.nombre_curso }}</a>
+                                    </td>
+                                    <td>
+                                        {% if curso.tipo == "ESO" %}{{ textos.ESO }}
+                                        {% elseif curso.tipo == "BACH" %}{{ textos.BACH }}
+                                        {% elseif curso.tipo == "FPB" %}{{ textos.FPB }}
+                                        {% elseif curso.tipo == "FPGM" %}{{ textos.FPGM }}
+                                        {% elseif curso.tipo == "FPGS" %}{{ textos.FPGS }}
+                                        {% else %}{{ curso.tipo }}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+
+                                        {% if curso.turno == "m" %}{{ textos.TurnoManana }}
+                                        {% elseif curso.turno == "t" %}{{ textos.TurnoTarde }}
+                                        {% endif %}
+                                    </td>
+                                </tr>
+
+                            {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}   
+                <p class="cursiva">{{ textos.NoHayCursos }}</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+

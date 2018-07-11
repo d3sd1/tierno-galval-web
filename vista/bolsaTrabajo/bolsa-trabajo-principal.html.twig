@@ -1,0 +1,65 @@
+{# empty Twig template #}
+{% extends "index.html.twig" %}
+{% block content %}
+
+    <div class="p-2 ">
+        <div class="contenedor">
+                <div class="col-md-4 border rounded bg-white">
+                    <h3 class="" contenteditable="false">Opciones de Filtración</h3>
+                    <p class="lead">Ciclo Formativo</p>
+                    <form id="form_filtrar_ofertas" class="">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="fp_oferta" id="" value="0" checked>
+                            <label class="form-check-label" for="exampleRadios1"> Todas las Ofertas</label>
+                        </div>
+                        {% for estudios in FP_ESTUDIOS.FP_ESTUDIOS %}
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="fp_oferta"
+                                       value="{{ estudios.ID_FP }}">
+                                <label class="form-check-label">{{ estudios.TITULO }} </label>
+                            </div>
+
+                        {% endfor %}
+
+                        <p class="lead">Fecha</p>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="orden" id="" value="DESC"
+                                   checked="">
+                            <label class="form-check-label" for="exampleRadios1"> Más recientes </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="orden" id="" value="ASC">
+                            <label class="form-check-label" for="exampleRadios1"> Más antiguas</label>
+                        </div>
+                        <button type="submit" id="filtrar_ofertas" class="btn btn-primary btn-sm btn-block m-1">Aplicar
+                            filtro
+                        </button>
+                    </form>
+                </div>
+                <div class="col-md-8">
+                    <h1 class="">Ofertas de trabajo</h1>
+                    <div class="list-group">
+
+
+                    </div>
+
+                    <div id="pagination" class="mt-md-1 d-flex justify-content-center"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+
+    {% include 'bolsaTrabajo/scripts-comunes.html.twig' %}
+    <link rel="stylesheet" href="node_modules/paginationjs/dist/pagination.css"
+          type="text/css">
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/paginationjs/dist/pagination.js"></script>
+    <script src="js/bolsaTrabajo/principal.js"></script>
+    <script src="js/bolsaTrabajo/funciones_comunes.js"></script>
+
+{% endblock %}
